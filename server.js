@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 
 const vehicleRoutes = require("./routes/vehicleRoutes");
 const driverRoutes = require("./routes/driverRoutes");
+const tripRoutes = require("./routes/tripRoutes");
 
 const app = express();
 
@@ -33,6 +34,9 @@ app.use("/api/vehicles", vehicleRoutes);
 
 // Driver APIs
 app.use("/api/drivers", driverRoutes);
+
+// Trip APIs
+app.use("/api/trips", tripRoutes);
 
 const PORT = process.env.PORT || 3000;
 
