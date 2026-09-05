@@ -4,7 +4,9 @@ const express = require("express");
 const cors = require("cors");
 
 const connectDB = require("./config/db");
+
 const vehicleRoutes = require("./routes/vehicleRoutes");
+const driverRoutes = require("./routes/driverRoutes");
 
 const app = express();
 
@@ -28,6 +30,9 @@ app.get("/api/health", (req, res) => {
 
 // Vehicle APIs
 app.use("/api/vehicles", vehicleRoutes);
+
+// Driver APIs
+app.use("/api/drivers", driverRoutes);
 
 const PORT = process.env.PORT || 3000;
 
