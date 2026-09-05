@@ -9,6 +9,7 @@ const vehicleRoutes = require("./routes/vehicleRoutes");
 const driverRoutes = require("./routes/driverRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const maintenanceRoutes = require("./routes/maintenanceRoutes");
+const fuelRoutes = require("./routes/fuelRoutes");
 
 const app = express();
 
@@ -42,14 +43,22 @@ app.use("/api/trips", tripRoutes);
 // Maintenance APIs
 app.use("/api/maintenance", maintenanceRoutes);
 
+// Fuel APIs
+app.use("/api/fuel", fuelRoutes);
+
 const PORT = process.env.PORT || 3000;
 
 async function startServer() {
-  await connectDB();
+  try {
+    await connectDB();
 
-  app.listen(PORT, () => {
-    console.log(`Fleet backend running on http://localhost:${PORT}`);
-  });
+    app.listen(PORT, () => {
+      console.log(`Fleet backend running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("Server startup failed:", error.message);
+    process.exit(1);
+  }
 }
 
 startServer();
