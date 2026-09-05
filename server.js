@@ -12,6 +12,7 @@ const maintenanceRoutes = require("./routes/maintenanceRoutes");
 const fuelRoutes = require("./routes/fuelRoutes");
 const safetyAlertRoutes = require("./routes/safetyAlertRoutes");
 const analyticsRoutes = require("./routes/analyticsRoutes");
+const routeRoutes = require("./routes/routeRoutes");
 
 const app = express();
 
@@ -54,6 +55,9 @@ app.use("/api/safety-alerts", safetyAlertRoutes);
 // Analytics APIs
 app.use("/api/analytics", analyticsRoutes);
 
+// Route Optimization APIs
+app.use("/api/routes", routeRoutes);
+
 const PORT = process.env.PORT || 3000;
 
 async function startServer() {
@@ -61,10 +65,16 @@ async function startServer() {
     await connectDB();
 
     app.listen(PORT, () => {
-      console.log(`Fleet backend running on http://localhost:${PORT}`);
+      console.log(
+        `Fleet backend running on http://localhost:${PORT}`
+      );
     });
   } catch (error) {
-    console.error("Server startup failed:", error.message);
+    console.error(
+      "Server startup failed:",
+      error.message
+    );
+
     process.exit(1);
   }
 }
