@@ -11,6 +11,7 @@ const tripRoutes = require("./routes/tripRoutes");
 const maintenanceRoutes = require("./routes/maintenanceRoutes");
 const fuelRoutes = require("./routes/fuelRoutes");
 const safetyAlertRoutes = require("./routes/safetyAlertRoutes");
+const analyticsRoutes = require("./routes/analyticsRoutes");
 
 const app = express();
 
@@ -49,6 +50,9 @@ app.use("/api/fuel", fuelRoutes);
 
 // Safety Alert APIs
 app.use("/api/safety-alerts", safetyAlertRoutes);
+
+// Analytics APIs
+app.use("/api/analytics", analyticsRoutes);
 
 const PORT = process.env.PORT || 3000;
 
