@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 const vehicleRoutes = require("./routes/vehicleRoutes");
 const driverRoutes = require("./routes/driverRoutes");
 const tripRoutes = require("./routes/tripRoutes");
+const maintenanceRoutes = require("./routes/maintenanceRoutes");
 
 const app = express();
 
@@ -37,6 +38,9 @@ app.use("/api/drivers", driverRoutes);
 
 // Trip APIs
 app.use("/api/trips", tripRoutes);
+
+// Maintenance APIs
+app.use("/api/maintenance", maintenanceRoutes);
 
 const PORT = process.env.PORT || 3000;
 
